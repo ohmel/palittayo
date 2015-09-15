@@ -174,6 +174,16 @@ class SiteController extends RestController
         }
     }
 
+    public function logout(){
+        $loginArr = array();
+        Yii::app()->user->logout();
+        $loginArr['isLoggedIn'] = false;
+        $loginArr['isGuest'] = Yii::app()->user->isGuest;
+        $loginArr['userId'] = null;
+        $loginArr['name'] = null;
+        return $loginArr;
+    }
+
     public function restEvents()
     {
         $this->onRest('req.post.login.render', function ($data) {
@@ -184,6 +194,9 @@ class SiteController extends RestController
         });
         $this->onRest('req.get.itemList.render', function () {
             echo $this->restJsonEncode($this->itemList());
+        });
+        $this->onRest('req.get.logout.render', function () {
+            echo $this->restJsonEncode($this->logout());
         });
         $this->onRest('req.get.item.render', function () {
             $itemId = $_GET['itemId'];
