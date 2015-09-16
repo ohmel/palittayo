@@ -77,19 +77,12 @@ INSERT INTO `items` (`item_id`, `item_name`, `item_desc`, `item_trade_value`, `c
 -- Table structure for table `tbl_migration`
 --
 
-CREATE TABLE IF NOT EXISTS `tbl_migration` (
-  `version` varchar(255) NOT NULL,
-  `apply_time` int(11) DEFAULT NULL,
-  PRIMARY KEY (`version`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_migration`
 --
 
-INSERT INTO `tbl_migration` (`version`, `apply_time`) VALUES
-('m000000_000000_base', 1430754598),
-('m150504_154455_createAuthTables', 1430754608);
+
 
 -- --------------------------------------------------------
 
@@ -145,24 +138,7 @@ INSERT INTO `user_profile` (`profile_id`, `user_id`, `profile_fname`, `profile_l
 (1, 1, 'Admin', 'istrator', 'A', '09163013924', '6429163', 'Philippines', 'amalejo@gmail.com', 'ang buhay ay parang bato...magaspang!', '2015-09-11', '@DmoneyMaker');
 
 --
--- Constraints for dumped tables
---
 
---
--- Constraints for table `authassignment`
---
-ALTER TABLE `authassignment`
-  ADD CONSTRAINT `authassignment_ibfk_1` FOREIGN KEY (`itemname`) REFERENCES `authitem` (`name`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Constraints for table `authitemchild`
---
-ALTER TABLE `authitemchild`
-  ADD CONSTRAINT `authitemchild_ibfk_1` FOREIGN KEY (`parent`) REFERENCES `authitem` (`name`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `authitemchild_ibfk_2` FOREIGN KEY (`child`) REFERENCES `authitem` (`name`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Constraints for table `items`
 --
 ALTER TABLE `items`
   ADD CONSTRAINT `category` FOREIGN KEY (`category_id`) REFERENCES `category` (`category_id`),
@@ -174,6 +150,4 @@ ALTER TABLE `items`
 ALTER TABLE `user_profile`
   ADD CONSTRAINT `users` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
