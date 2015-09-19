@@ -1,1 +1,1 @@
-ALTER TABLE `commentsyii` CHANGE `date_posted` `date_posted` DATE NOT NULL;
+ALTER TABLE `comments` CHANGE `date_posted` `date_posted` DATE NOT NULL;
