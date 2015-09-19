@@ -1,0 +1,1 @@
+ALTER TABLE `commentsyii` CHANGE `date_posted` `date_posted` DATE NOT NULL;
