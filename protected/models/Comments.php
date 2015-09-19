@@ -39,7 +39,7 @@ class Comments extends CActiveRecord
         // will receive user inputs.
         return array(
             array('comment, user_id, item_id, date_posted', 'required'),
-            array('user_id, item_id, date_posted', 'numerical', 'integerOnly' => true),
+            array('user_id, item_id', 'numerical', 'integerOnly' => true),
             // The following rule is used by search().
             // Please remove those attributes that should not be searched.
             array('comment_id, comment, user_id, item_id, date_posted', 'safe', 'on' => 'search'),
