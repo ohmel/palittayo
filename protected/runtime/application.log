@@ -5854,3 +5854,67 @@ REQUEST_URI=/palittayo/index.php/api/comment/getComments?commentType=item
 in C:\xampp\htdocs\palittayo\protected\controllers\CommentController.php (18)
 in C:\xampp\htdocs\palittayo\protected\extensions\starship\RestfullYii\events\Eventor\Eventor.php (170)
 in C:\xampp\htdocs\palittayo\protected\extensions\starship\RestfullYii\behaviors\ERestBehavior.php (109)
+2015/09/19 18:03:19 [error] [exception.CException] exception 'CException' with message 'CommentController and its behaviors do not have a method or closure named "postComments".' in C:\xampp\htdocs\yii\framework\base\CComponent.php:266
+Stack trace:
+#0 C:\xampp\htdocs\palittayo\protected\controllers\CommentController.php(38): CComponent->__call('postComments', Array)
+#1 C:\xampp\htdocs\palittayo\protected\controllers\CommentController.php(38): CommentController->postComments(Array, '1', 'user')
+#2 [internal function]: CommentController->{closure}(Array, NULL, NULL)
+#3 C:\xampp\htdocs\palittayo\protected\extensions\starship\RestfullYii\events\Eventor\Eventor.php(170): call_user_func_array(Object(Closure), Array)
+#4 C:\xampp\htdocs\palittayo\protected\extensions\starship\RestfullYii\behaviors\ERestBehavior.php(109): Eventor->emit('req.post.postCo...', Array)
+#5 [internal function]: ERestBehavior->emitRest('req.post.postCo...', Array)
+#6 C:\xampp\htdocs\yii\framework\base\CComponent.php(261): call_user_func_array(Array, Array)
+#7 C:\xampp\htdocs\palittayo\protected\extensions\starship\RestfullYii\actions\EActionRestPOST.php(36): CComponent->__call('emitRest', Array)
+#8 C:\xampp\htdocs\palittayo\protected\extensions\starship\RestfullYii\actions\EActionRestPOST.php(36): CommentController->emitRest('req.post.postCo...', Array)
+#9 [internal function]: EActionRestPOST->{closure}(Array, Array)
+#10 C:\xampp\htdocs\palittayo\protected\extensions\starship\RestfullYii\actions\ERestBaseAction.php(60): call_user_func_array(Object(Closure), Array)
+#11 C:\xampp\htdocs\palittayo\protected\extensions\starship\RestfullYii\actions\EActionRestPOST.php(51): ERestBaseAction->finalRender(Object(Closure))
+#12 [internal function]: EActionRestPOST->run('postComment', NULL, NULL)
+#13 C:\xampp\htdocs\yii\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(EActionRestPOST), Array)
+#14 C:\xampp\htdocs\yii\framework\web\actions\CAction.php(73): CAction->runWithParamsInternal(Object(EActionRestPOST), Object(ReflectionMethod), Array)
+#15 C:\xampp\htdocs\yii\framework\web\CController.php(309): CAction->runWithParams(Array)
+#16 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(EActionRestPOST))
+#17 C:\xampp\htdocs\palittayo\protected\extensions\starship\RestfullYii\filters\ERestFilter.php(88): CFilterChain->run()
+#18 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(39): ERestFilter->preFilter(Object(CFilterChain))
+#19 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(131): CFilter->filter(Object(CFilterChain))
+#20 C:\xampp\htdocs\yii\framework\web\CController.php(292): CFilterChain->run()
+#21 C:\xampp\htdocs\yii\framework\web\CController.php(266): CController->runActionWithFilters(Object(EActionRestPOST), Array)
+#22 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(276): CController->run('REST.POST')
+#23 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(135): CWebApplication->runController('comment/REST.PO...')
+#24 C:\xampp\htdocs\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#25 C:\xampp\htdocs\palittayo\index.php(13): CApplication->run()
+#26 {main}
+REQUEST_URI=/palittayo/index.php/api/comment/postComment?commentType=user&parentId=1
+HTTP_REFERER=http://localhost/palitantayo/
+---
+2015/09/19 18:03:46 [error] [exception.CException] exception 'CException' with message 'CommentController and its behaviors do not have a method or closure named "getComment".' in C:\xampp\htdocs\yii\framework\base\CComponent.php:266
+Stack trace:
+#0 C:\xampp\htdocs\palittayo\protected\controllers\CommentController.php(43): CComponent->__call('getComment', Array)
+#1 C:\xampp\htdocs\palittayo\protected\controllers\CommentController.php(43): CommentController->getComment('1', 'user')
+#2 [internal function]: CommentController->{closure}(NULL, NULL)
+#3 C:\xampp\htdocs\palittayo\protected\extensions\starship\RestfullYii\events\Eventor\Eventor.php(170): call_user_func_array(Object(Closure), Array)
+#4 C:\xampp\htdocs\palittayo\protected\extensions\starship\RestfullYii\behaviors\ERestBehavior.php(109): Eventor->emit('req.get.getComm...', Array)
+#5 [internal function]: ERestBehavior->emitRest('req.get.getComm...', Array)
+#6 C:\xampp\htdocs\yii\framework\base\CComponent.php(261): call_user_func_array(Array, Array)
+#7 C:\xampp\htdocs\palittayo\protected\extensions\starship\RestfullYii\actions\EActionRestGET.php(38): CComponent->__call('emitRest', Array)
+#8 C:\xampp\htdocs\palittayo\protected\extensions\starship\RestfullYii\actions\EActionRestGET.php(38): CommentController->emitRest('req.get.getComm...', Array)
+#9 [internal function]: EActionRestGET->{closure}(Array, Array)
+#10 C:\xampp\htdocs\palittayo\protected\extensions\starship\RestfullYii\actions\ERestBaseAction.php(60): call_user_func_array(Object(Closure), Array)
+#11 C:\xampp\htdocs\palittayo\protected\extensions\starship\RestfullYii\actions\EActionRestGET.php(59): ERestBaseAction->finalRender(Object(Closure))
+#12 [internal function]: EActionRestGET->run('getComments', NULL, NULL)
+#13 C:\xampp\htdocs\yii\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(EActionRestGET), Array)
+#14 C:\xampp\htdocs\yii\framework\web\actions\CAction.php(73): CAction->runWithParamsInternal(Object(EActionRestGET), Object(ReflectionMethod), Array)
+#15 C:\xampp\htdocs\yii\framework\web\CController.php(309): CAction->runWithParams(Array)
+#16 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(EActionRestGET))
+#17 C:\xampp\htdocs\palittayo\protected\extensions\starship\RestfullYii\filters\ERestFilter.php(88): CFilterChain->run()
+#18 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(39): ERestFilter->preFilter(Object(CFilterChain))
+#19 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(131): CFilter->filter(Object(CFilterChain))
+#20 C:\xampp\htdocs\yii\framework\web\CController.php(292): CFilterChain->run()
+#21 C:\xampp\htdocs\yii\framework\web\CController.php(266): CController->runActionWithFilters(Object(EActionRestGET), Array)
+#22 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(276): CController->run('REST.GET')
+#23 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(135): CWebApplication->runController('comment/REST.GE...')
+#24 C:\xampp\htdocs\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#25 C:\xampp\htdocs\palittayo\index.php(13): CApplication->run()
+#26 {main}
+REQUEST_URI=/palittayo/index.php/api/comment/getComments?commentType=user&parentId=1
+HTTP_REFERER=http://localhost/palitantayo/
+---
