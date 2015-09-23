@@ -118,10 +118,10 @@ class UserProfile extends CActiveRecord
 		}
 	}
 
-	public function checkIfFollowing($followerId, $userId){
-		$criteria = $criteria=new CDbCriteria;
+	public function checkIfFollowing($followedId, $followerId){
+		$criteria = new CDbCriteria;
 		$criteria->compare('follower_id',$followerId);
-		$criteria->compare('user_id',$userId);
+		$criteria->compare('user_id',$followedId);
 
 		$following = Follow::model()->find($criteria);
 		if($following){
@@ -131,15 +131,15 @@ class UserProfile extends CActiveRecord
 		}
 	}
 
-	public function follow($followerId, $userId){
-		$profile = $this::model()->findByPk($userId);
-		$profile->follower = $profile->follower + 1;
+	public function follow($followedId, $followerId){
+		$profile = $this::model()->findByPk($followedId);
+		$profile->followers = $profile->followers + 1;
 		if(!$profile->save()){
 			throw new CHttpException(500, "There might have been an error following this account...");
 		}else{
 			$followTable = new Follow();
 			$followTable->follower_id = $followerId;
-			$followTable->following_id = $userId;
+			$followTable->following_id = $followedId;
 			if(!$followTable->save()){
 				throw new CHttpException(500, "There might have been an error following this account...");
 			}else{

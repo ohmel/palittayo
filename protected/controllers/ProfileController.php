@@ -7,9 +7,14 @@ class ProfileController extends RestController
         return $profile->getProfile($userId);
     }
 
-    public function follow($followerId, $userId){
+    public function follow($followedId, $followerId){
         $profile = new UserProfile();
-        return $profile->follow($followerId, $userId);
+        return $profile->follow($followedId, $followerId);
+    }
+
+    public function checkIfFollowing($followedId, $followerId){
+        $profile = new UserProfile();
+        return $profile->checkIfFollowing($followedId, $followerId);
     }
 
     public function restEvents()
@@ -19,8 +24,14 @@ class ProfileController extends RestController
             echo $this->restJsonEncode($this->getProfile($userId));
         });
 
-        $this->onRest('req.post.getProfile.render', function ($data) {
-            echo $this->restJsonEncode($this->follow($data['userId'], $data['followingId']));
+        $this->onRest('req.post.follow.render', function ($data) {
+//            $this->printa($data); exit;
+            echo $this->restJsonEncode($this->follow($data['followedId'], $data['followerId']));
+        });
+
+        $this->onRest('req.get.checkIfFollowing.render', function ($data) {
+//            $this->printa($data); exit;
+            echo $this->restJsonEncode($this->checkIfFollowing($data['followedId'], $data['followerId']));
         });
     }
 }
