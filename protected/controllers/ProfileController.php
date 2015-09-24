@@ -31,7 +31,7 @@ class ProfileController extends RestController
 
         $this->onRest('req.get.checkIfFollowing.render', function ($data) {
 //            $this->printa($data); exit;
-            echo $this->restJsonEncode($this->checkIfFollowing($data['followedId'], $data['followerId']));
+            echo $this->restJsonEncode($this->checkIfFollowing($_GET['followedId'], $_GET['followerId']));
         });
     }
 }

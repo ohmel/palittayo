@@ -23,7 +23,7 @@ class UserIdentity extends CUserIdentity {
     
     public function authenticate() {
 
-        $model = Users::model()->find("user_name=:user_name and user_password=:user_password and user_type = 'Administrator'", array(':user_name'=>$this->username, ':user_password'=>md5($this->password)));
+        $model = Users::model()->find("user_name=:user_name and user_password=:user_password", array(':user_name'=>$this->username, ':user_password'=>md5($this->password)));
 //        echo $model->user_name;exit;
 //        $users = array(
 //            // username => password

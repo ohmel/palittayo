@@ -121,9 +121,9 @@ class UserProfile extends CActiveRecord
 	public function checkIfFollowing($followedId, $followerId){
 		$criteria = new CDbCriteria;
 		$criteria->compare('follower_id',$followerId);
-		$criteria->compare('user_id',$followedId);
+		$criteria->compare('following_id',$followedId);
 
-		$following = Follow::model()->find($criteria);
+		$following = Follow::model()->find("following_id = {$followedId} and follower_id = {$followerId}");
 		if($following){
 			return true;
 		}else{
@@ -134,6 +134,8 @@ class UserProfile extends CActiveRecord
 	public function follow($followedId, $followerId){
 		$profile = $this::model()->findByPk($followedId);
 		$profile->followers = $profile->followers + 1;
+		$myProfile = $this::model()->findByPk($followerId);
+		$myProfile->following = $profile->following + 1;
 		if(!$profile->save()){
 			throw new CHttpException(500, "There might have been an error following this account...");
 		}else{
